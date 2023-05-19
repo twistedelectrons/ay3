@@ -1,6 +1,6 @@
 The following applies to the code in `src/` and `include/`:
 
-Copyright 2021 - 2022 Alex Smith.
+Copyright 2023 Alex Smith.
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
