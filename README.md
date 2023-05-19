@@ -1,4 +1,4 @@
-# MEGAfm
+# AY3
 
 This is the Atmega1284 firmware for the [AY3 Synthesizer](https://www.twistedelectrons.com/ay3).
 
