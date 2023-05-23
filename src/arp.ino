@@ -356,8 +356,8 @@ void doArp4()
                 arpOct4 = 0;
         }
 
-        if (bitRead(ledMatrix[2], 4) == 1)
-            base[4] = noteMem4[arpStep4 - 1] + (arpOct4 * 12); // RIO: not fixed but bitRead 2nd arg: 3 instead 4?
+        if (bitRead(ledMatrix[2], 3) == 1)
+            base[4] = noteMem4[arpStep4 - 1] + (arpOct4 * 12); 
     }
     else if (lfoShape == 7)
     {

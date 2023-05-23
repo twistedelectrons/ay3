@@ -372,7 +372,8 @@ void setup()
 
     // sysex receive
     if (!digitalRead(5))
-        receiveDump();
+        // replace receive dump with factory reset
+        factoryReset();
     if (!digitalRead(6))
     {
     } // vol
