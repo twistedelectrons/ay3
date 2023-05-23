@@ -171,7 +171,7 @@ void receivedNote(byte channel, int note, int vel)
                     if (noteMem1[i] == note)
                         noteMem1[i] = 00;
 
-                isort(noteMem1, held1 + 1); // RIO: fixed: changed '1+1' to 'held1+1'
+                isort(noteMem1, held1 + 1);
                 if (held1 == 0)
                     base[1] = 0;
             }

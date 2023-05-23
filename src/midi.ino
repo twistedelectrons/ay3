@@ -34,7 +34,7 @@ void readMidi()
             break;
         case ProgramChange:
             handleProgramChange(MIDI.getChannel(), MIDI.getData1(), MIDI.getData2());
-            break; // RIO: fixed by a break (PC is handled and shouldn't go default)
+            break;
         default:
             break;
         }
@@ -368,4 +368,3 @@ void handleProgramChange(int channel, int number1, int number2)
         }
     }
 }
-

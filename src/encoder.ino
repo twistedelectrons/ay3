@@ -182,8 +182,8 @@ void encoderMoved(int dir)
                 load();
             }
 
-            numberOld = ledNumber; // RIO: fixed initial representation of loaded preset number
-        }                          // PRESET CHANGE
+            numberOld = ledNumber;
+        } // PRESET CHANGE
 
         if (voiceMode < 3)
         {
@@ -389,7 +389,14 @@ void encoderMoved(int dir)
                     noiseFreq1 = 0;
 
                 AY3(6, noiseFreq1 + 1);
-                ledNumber = 9 - (1 + noiseFreq1 / 4);
+                if (noiseFreq1 < 31)
+                {
+                    ledNumber = 9 - (noiseFreq1 / 4);
+                }
+                else
+                {
+                    ledNumber = 9 - (1 + noiseFreq1 / 4);
+                }
             }
             else
             {
@@ -400,7 +407,7 @@ void encoderMoved(int dir)
                 else if (noiseFreq2 < 0)
                     noiseFreq2 = 0;
 
-                AY32(6, noiseFreq2); // RIO: not fixed but missing +1 ?
+                AY32(6, noiseFreq2);
 
                 ledNumber = 9 - (1 + noiseFreq2 / 4);
             }

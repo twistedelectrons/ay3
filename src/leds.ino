@@ -17,7 +17,7 @@ void doLedMatrix()
     // bank = 4,7
     // preset = 5,7
 
-    matrixFlasher += 3; // RIO: somewhat more relaxed flashing instead 5
+    matrixFlasher += 3;
     if (matrixFlasher > 4000)
     {
         matrixFlasher = 0;
@@ -114,8 +114,6 @@ void doLedMatrix()
         PORTC = temp;
         miniDelay();
 
-        // RIO: changed VOICE MATRIX UPDATE
-
         // voice states (bit 0..5)
         temp = ledMatrix[1];
 
@@ -163,8 +161,6 @@ void doLedMatrix()
         PORTB = B11111110;
         PORTC = temp;
         miniDelay();
-
-        // RIO: changed NOISE MATRIX UPDATE
 
         // noise with 3 states (0, 1, 2 selection)
         temp = ledMatrix[3];

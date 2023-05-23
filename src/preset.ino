@@ -9,7 +9,7 @@ void save()
             writey(seqNote[i]);
         for (int i = 1; i < 7; i++)
         {
-            writey(ledMatrix[i]); // RIO: todo: fix loop cursor, 1 entry wasted
+            writey(ledMatrix[i]);
             writey(tune[i]);
             writey(vol[i]);
         }
@@ -70,9 +70,9 @@ void load()
     for (int i = 1; i < 7; i++)
     {
 
-        ledMatrix[i] = readey();      // RIO: todo: fix loop cursor, 1 entry wasted
-        bitWrite(ledMatrix[i], 6, 0); // RIO: todo: fix loop cursor, 1 entry wasted
-        bitWrite(ledMatrix[i], 7, 0); // RIO: todo: fix loop cursor, 1 entry wasted
+        ledMatrix[i] = readey();
+        bitWrite(ledMatrix[i], 6, 0);
+        bitWrite(ledMatrix[i], 7, 0);
 
         presetTune[i] = readey();
         vol[i] = readey();

@@ -32,7 +32,7 @@ void doLfo()
         lfo = (lfoPhase - 0.5) * 2 * phaseTemp * lfoMax;
     }
     else if (lfoShape == 3)
-    { // RIO: note: identical with lfoShape 1
+    {
         phaseTemp = lfoDepth;
         phaseTemp = phaseTemp / 1023;
 

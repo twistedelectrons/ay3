@@ -4,7 +4,7 @@
 #include <MIDI.h>
 #include <EEPROM.h>
 
-unsigned long resetCounter; // RIO: type fixed
+unsigned long resetCounter;
 bool voicePressed;
 
 int lastEnvSpeed;
@@ -57,7 +57,7 @@ int memPointer;
 int preset = 0;
 int bank = 0;
 int selectedStep = 0;
-byte oldMatrix[7]; // RIO: Length extended, because loop cursor runs behind oldMatrix (length 6), but entry[0] is wasted
+byte oldMatrix[7];
 int seqDisplayCounter = 20000;
 boolean seqPressed;
 byte potJob = 0;
@@ -117,8 +117,8 @@ float lfoSpeed = 1;
 int seqSetup = 1;
 int lfoShape = 1;
 byte lfoDepth = 1;
-byte ledMatrix[7];    // RIO: Length extended, because loop cursor runs behind ledMatrix (length 6), but entry[0] is wasted
-byte ledMatrixPic[7]; // RIO: Length extended, because loop cursor runs behind ledMatrixPic (length 6), but entry[0] is wasted
+byte ledMatrix[7];
+byte ledMatrixPic[7];
 byte glide = 1;
 int arpSpeed = 1;
 
@@ -129,7 +129,7 @@ int destiPitch[7];
 boolean savePressed = 0;
 
 boolean retrig = 1;
-boolean seqLoop = 1; // RIO: never changed
+boolean seqLoop = 1;
 int seq = 0;
 
 byte envShape1;
@@ -141,7 +141,7 @@ int offsetFreq[7];
 int offsetNote[7];
 
 int seqCounter = 0;
-int seqMax = 1400; // RIO: unused
+int seqMax = 1400;
 int seqStep = 0;
 
 float lfoPhase = 0;
@@ -196,11 +196,6 @@ int lastStateCLK = -1; // initial -1, ignore first poll
 // const int freqOutputPin = 15;   // OC2A output pin for ATmega328 boards
 
 const int ocr2aval = 16;
-
-// RIO: unused freq calculation:
-// const int prescale = 1;
-// const float period = 2.0 * prescale * (ocr2aval+1) / (F_CPU/1.0e6);
-// const float freq = 1.0e6 / period;
 
 // AY3 STOFF
 const int envTp[] = {

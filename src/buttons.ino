@@ -138,7 +138,6 @@ void buttPressed(int pin, int state)
     if (state == 0)
     {
 
-        // RIO: RELEASE SELECTED ROW
         if ((pressedRow == 1 && pin == 8 && voiceMode == 1) || // [V T E release]
             (pressedRow == 2 && pin == 5) ||
             (pressedRow == 3 && pin == 10) ||
@@ -185,8 +184,8 @@ void buttPressed(int pin, int state)
                 seqDisplayCounter = 0;
 
                 if (voiceMode == 1)
-                {                              // enable
-                    ledMatrixPic[1] = B011110; // RIO: Changed Char E
+                { // enable
+                    ledMatrixPic[1] = B011110;
                     ledMatrixPic[2] = B000011;
                     ledMatrixPic[3] = B001111;
                     ledMatrixPic[4] = B000011;
@@ -194,8 +193,8 @@ void buttPressed(int pin, int state)
                 }
 
                 if (voiceMode == 2)
-                {                              // vol
-                    ledMatrixPic[1] = B110011; // RIO: Changed Char V
+                { // vol
+                    ledMatrixPic[1] = B110011;
                     ledMatrixPic[2] = B110011;
                     ledMatrixPic[3] = B110011;
                     ledMatrixPic[4] = B011110;
@@ -203,8 +202,8 @@ void buttPressed(int pin, int state)
                 }
 
                 if (voiceMode == 3)
-                {                              // tune
-                    ledMatrixPic[1] = B111111; // RIO: Changed Char T
+                { // tune
+                    ledMatrixPic[1] = B111111;
                     ledMatrixPic[2] = B111111;
                     ledMatrixPic[3] = B001100;
                     ledMatrixPic[4] = B001100;
@@ -284,7 +283,7 @@ void buttPressed(int pin, int state)
 
         if (pressedRow != 1)
         {
-            voiceMode = 1; // RIO: reset voiceMode
+            voiceMode = 1;
             if (pin == 11)
                 bitWrite(ledMatrix[pressedRow], pressedCol - 1, !bitRead(ledMatrix[pressedRow], pressedCol - 1));
             else if (pin == 2)
@@ -319,7 +318,6 @@ void buttPressed(int pin, int state)
         if (pin == 11 || pin == 2 || pin == 6 || pin == 9 || pin == 12 || pin == 3)
         {
 
-            // RIO: fixed representation of noise level
             if (pressedRow == 1 ||
                 pressedRow == 3 ||
                 pressedRow == 4)

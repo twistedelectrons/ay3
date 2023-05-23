@@ -9,7 +9,7 @@ void doPots()
     case 1:
         analogTemp = analogRead(A4) >> 2;
         if (analogTemp > (potLast[0] + 1) || analogTemp < (potLast[0] - 1))
-        { // RIO: fixed syntax, operator order could be compiler dep.
+        {
             lfoSpeed = analogTemp;
             potLast[0] = analogTemp;
             arpSpeed = 256 - analogTemp;
@@ -42,7 +42,6 @@ void doPots()
             detune = analogTemp;
             doDetune(detune);
 
-            // RIO: fixed initial representation of loaded preset number
             if (potLast[4] > -1)
             {
                 if (detune < 127)

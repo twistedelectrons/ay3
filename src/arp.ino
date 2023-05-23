@@ -357,7 +357,7 @@ void doArp4()
         }
 
         if (bitRead(ledMatrix[2], 3) == 1)
-            base[4] = noteMem4[arpStep4 - 1] + (arpOct4 * 12); 
+            base[4] = noteMem4[arpStep4 - 1] + (arpOct4 * 12);
     }
     else if (lfoShape == 7)
     {
@@ -480,7 +480,7 @@ void doArp6()
             base[6] = noteMem6[arpStep6 - 1] + (arpOct6 * 12);
     }
     else if (lfoShape == 5)
-    { // RIO: fixed from 6 to 5
+    {
         lfo = 0;
 
         arpStep6--;
