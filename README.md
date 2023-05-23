@@ -37,7 +37,7 @@ Thank you, we are looking forward to your contribution! :)
 
 ## License
 
-The MEGAfm firmware under `src/` and `include/` is free software. It is released under the terms of
+The AY3 firmware under `src/` and `include/` is free software. It is released under the terms of
 the [ISC License](LICENSE.md). The libraries and tools distributed in the `3rdparty/` and `lib/`
 directories have their own copyright and license notes.
 
