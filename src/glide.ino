@@ -15,13 +15,13 @@ void doGlide()
         {
             if (destiPitch[i] + bend[i] > pitch[i])
             {
-                pitch[i] += glider; // RIO: removed brackets
+                pitch[i] += glider;
                 if (pitch[i] > destiPitch[i] + bend[i])
                     pitch[i] = destiPitch[i] + bend[i];
             }
             else if (destiPitch[i] + bend[i] < pitch[i])
             {
-                pitch[i] -= glider; // RIO: removed brackets
+                pitch[i] -= glider;
                 if (pitch[i] < destiPitch[i] + bend[i])
                     pitch[i] = destiPitch[i] + bend[i];
             }

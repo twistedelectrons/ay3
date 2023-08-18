@@ -11400,7 +11400,7 @@ const byte factory[] = {
 
 void factoryReset()
 {
-    for (int i = 0; i < 4000; i++)
+    for (int i = 0; i < 3800; i++)
     {
         EEPROM.update(i, factory[i]);
     }
