@@ -17,7 +17,7 @@ void tick()
 
     if (seqDisplayCounter < 20000)
     {
-        if (!writeChannel)
+        if (!writeChannel && !writeBoardRevision)
             seqDisplayCounter += 1;
 
         // Counter to wipe numbers on led matrix and revert back to stored led matrix

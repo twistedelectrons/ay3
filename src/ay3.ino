@@ -99,20 +99,20 @@ void send1(unsigned char address, unsigned char data)
 void mode_latch2()
 {
     PORTD |= _BV(4); // digitalWrite (12, HIGH);
-    PORTD |= _BV(6); // digitalWrite (14, HIGH);
+    PORTD |= _BV(6+boardRevision); // digitalWrite (14/15, HIGH);
     delayMicroseconds(chipDelay);
 }
 
 void mode_write2()
 {
     PORTD &= ~_BV(4); // digitalWrite (12, LOW);
-    PORTD |= _BV(6);  // digitalWrite (14, HIGH);
+    PORTD |= _BV(6+boardRevision);  // digitalWrite (14, HIGH);
 }
 
 void mode_inactive2()
 {
     PORTD &= ~_BV(4); // digitalWrite (12, LOW);
-    PORTD &= ~_BV(6); // digitalWrite (14, LOW);
+    PORTD &= ~_BV(6+boardRevision); // digitalWrite (14, LOW);
 }
 
 void send2(unsigned char address, unsigned char data)
@@ -137,25 +137,28 @@ void send2(unsigned char address, unsigned char data)
 
 void init2MhzClock()
 {
-    // Set Timer 2 CTC mode with no prescaling.  OC2A toggles on compare match
-    //
-    // WGM22:0 = 010: CTC Mode, toggle OC
-    // WGM2 bits 1 and 0 are in TCCR2A,
-    // WGM2 bit 2 is in TCCR2B
-    // COM2A0 sets OC2A (arduino pin 11 on Uno or Duemilanove) to toggle on compare match
-    //
-    TCCR2A = ((1 << WGM21) | (1 << COM2A0));
+    if (!boardRevision) {
 
-    // Set Timer 2  No prescaling  (i.e. prescale division = 1)
-    //
-    // CS22:0 = 001: Use CPU clock with no prescaling
-    // CS2 bits 2:0 are all in TCCR2B
-    TCCR2B = (1 << CS20);
+        // PWM 500Khz (17 cycles), Timer 2A
+        TCCR2A = 
+          1 << COM2A0 |   // TOGGLE A
+          1 << WGM21;     // CTC (OCR2A = TOP)
+        TCCR2B = 
+          1 << CS20;      // NO PRESCALE = 1
+        TIMSK2 = 0;       // NO ISRs
+        OCR2A = 16;       // 17 cycles
 
-    // Make sure Compare-match register A interrupt for timer2 is disabled
-    TIMSK2 = 0;
-    // This value determines the output frequency
-    OCR2A = ocr2aval;
+    } else {
+
+        // PWM 500Khz (17 cycles), Timer 2B
+        TCCR2A = 
+          1 << COM2B0 |   // TOGGLE B
+          1 << WGM21;     // CTC (OCR2A = TOP)
+        TCCR2B = 
+          1 << CS20;      // NO PRESCALE = 1
+        TIMSK2 = 0;       // NO ISRs
+        OCR2A = 16;       // 17 cycles
+    }
 }
 
 void set_chA_amplitude(int amplitude, boolean useEnvelope)

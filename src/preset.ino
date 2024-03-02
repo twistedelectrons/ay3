@@ -1,6 +1,6 @@
 void save()
 {
-    if (!writeChannel)
+    if (!writeChannel && !writeBoardRevision)
     {
         memPointer = (preset * 60) + ((bank * 60) * 8);
 

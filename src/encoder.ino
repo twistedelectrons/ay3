@@ -3,9 +3,10 @@ void encoderMoved(int dir)
     if (seqSetup == 0)
     {
         selectedStep += dir;
+        byte max = writeBoardRevision ? 2 : 16;
 
-        if (selectedStep > 15)
-            selectedStep = 15;
+        if (selectedStep > max-1)
+            selectedStep = max-1;
         else if (selectedStep < 0)
             selectedStep = 0;
 
@@ -150,6 +151,9 @@ void encoderMoved(int dir)
 
         if (writeChannel)
             EEPROM.write(3802, selectedStep + 1);
+
+        if (writeBoardRevision)
+            EEPROM.write(3803, selectedStep + 1);
     }
     else
     {

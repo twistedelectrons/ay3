@@ -9,6 +9,7 @@ bool voicePressed;
 
 int lastEnvSpeed;
 byte masterChannel; // located at 3802
+byte boardRevision; // located at 3803
 
 byte ay3Reg1[18];
 byte ay3Reg2[18];
@@ -41,6 +42,7 @@ const int tp[] = {
 };
 
 bool writeChannel = false;
+bool writeBoardRevision = false;
 byte seqNoise1;
 byte seqNoise2;
 byte seqVoice1;
@@ -243,6 +245,8 @@ void setup()
     if (masterChannel == 0 || masterChannel > 16)
         masterChannel = 1;
 
+    boardRevision = EEPROM.read(3803) ? 1 : 0;
+
     potLast[0] = potLast[1] = potLast[2] = potLast[3] = potLast[4] = -1;
 
     ledMatrix[1] = ledMatrix[2] = ledMatrix[3] = ledMatrix[4] = ledMatrix[5] = 255;
@@ -318,7 +322,7 @@ void setup()
 
     digitalWrite(12, LOW);
     digitalWrite(13, LOW);
-    digitalWrite(14, LOW);
+    digitalWrite(14 + boardRevision, LOW);
 
     pinMode(9, OUTPUT);
 
@@ -371,7 +375,10 @@ void setup()
         factoryReset();
     if (!digitalRead(6))
     {
-    } // vol
+        writeBoardRevision = true;
+        seqSetup = 0;
+        selectedStep = boardRevision;
+    } // voice
 
     PORTA |= _BV(1);  // digitalWrite (A1-25, HIGH);
     PORTA |= _BV(2);  // digitalWrite (A2-26, HIGH);

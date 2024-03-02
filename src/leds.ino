@@ -147,7 +147,7 @@ void doLedMatrix()
                 temp = B00111111; // none --> set all
         }
 
-        if (seqSetup == 0 && !writeChannel && seqDisplayCounter > 5999)
+        if (seqSetup == 0 && !writeChannel && !writeBoardRevision && seqDisplayCounter > 5999)
         {
             if (seqVoice[selectedStep] == 1)
                 temp = B00111111;
@@ -225,7 +225,7 @@ void doLedMatrix()
             }
         }
 
-        if (seqSetup == 0 && !writeChannel && seqDisplayCounter > 5999)
+        if (seqSetup == 0 && !writeChannel && !writeBoardRevision && seqDisplayCounter > 5999)
         {
             if (seqNoise[selectedStep] == 1)
                 temp = B00111111;
@@ -275,6 +275,6 @@ void doLedMatrix()
         miniDelay();
     }
 
-    if (!writeChannel)
+    if (!writeChannel && !writeBoardRevision)
         alternator = !alternator;
 }
