@@ -322,7 +322,7 @@ void setup()
 
     digitalWrite(12, LOW);
     digitalWrite(13, LOW);
-    digitalWrite(14 + boardRevision, LOW);
+    digitalWrite(14 + boardRevision, LOW); // (14/15);
 
     pinMode(9, OUTPUT);
 

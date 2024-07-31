@@ -106,13 +106,13 @@ void mode_latch2()
 void mode_write2()
 {
     PORTD &= ~_BV(4); // digitalWrite (12, LOW);
-    PORTD |= _BV(6+boardRevision);  // digitalWrite (14, HIGH);
+    PORTD |= _BV(6+boardRevision);  // digitalWrite (14/15, HIGH);
 }
 
 void mode_inactive2()
 {
     PORTD &= ~_BV(4); // digitalWrite (12, LOW);
-    PORTD &= ~_BV(6+boardRevision); // digitalWrite (14, LOW);
+    PORTD &= ~_BV(6+boardRevision); // digitalWrite (14/15, LOW);
 }
 
 void send2(unsigned char address, unsigned char data)
